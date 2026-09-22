@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-09-22
+
+### Changed
+
+- Update `next` to 16.3.6, `react`/`react-dom` to 19.3.0, `react-toastify` to 11.1.0, and dev dependencies to their latest compatible versions
+- Bump GitHub Actions (`actions/checkout`, `actions/setup-node`, `pnpm/action-setup`) to their latest major versions
+- Switch Dependabot update schedule from weekly to monthly
+
+### Fixed
+
+- Resolve critical and high-severity `next` security advisories
+- Resolve `flatted` prototype-pollution and `deepmerge-ts` stack-exhaustion advisories
+
 ## [1.1.0] - 2026-03-13
 
 ### Added
