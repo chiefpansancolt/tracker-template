@@ -61,9 +61,31 @@ Files to update:
 | `src/lib/services/storage.ts`         | `STORAGE_KEY` constant (rename to your app slug)                 |
 | `public/`                             | Replace `favicon.ico` and any logo images                        |
 | `src/app/site.webmanifest`            | `name`, `short_name`, `theme_color`, icon paths                  |
+| `src/app/robots.ts`                   | `SITE_URL`                                                       |
+| `src/app/sitemap.ts`                  | `SITE_URL`, add an entry per new indexable route                 |
+| `src/app/opengraph-image.tsx`         | `alt`, title/subtitle text, colors                                |
 | `.github/CODEOWNERS`                  | Your GitHub username                                             |
 | `.github/CONTRIBUTING.md`             | Repository URL                                                   |
 | `.github/FUNDING.yml`                 | Your funding links (or delete the file)                          |
+
+---
+
+## Section 2b — SEO Setup
+
+The template ships with a working SEO baseline. Update these pieces before you deploy:
+
+| File                              | What it does                                                                                     |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `src/app/layout.tsx`               | Root metadata — `siteUrl`, title template, description, keywords, OpenGraph/Twitter, canonical `/` |
+| `src/app/robots.ts`                | Crawl rules + sitemap pointer. `SITE_URL` here must match `siteUrl` in `layout.tsx`                 |
+| `src/app/sitemap.ts`               | List of indexable routes. `SITE_URL` here must match the other two files                            |
+| `src/app/opengraph-image.tsx`      | Dynamically generated 1200×630 social share image — no logo file required                           |
+
+**The three `SITE_URL` / `siteUrl` values must always match.** A mismatch between them was a real bug found across the gamerdex app family (wrong domain in one file while the others were correct), so keep them in sync when you rename the app or change domains.
+
+**Per-page metadata pattern**: because every `page.tsx` in this template is a client component (`"use client"`), metadata can't be exported directly from it — Next.js requires a server component for that. The template demonstrates the fix with a sibling `layout.tsx` next to each page (see `src/app/(home)/layout.tsx`, `src/app/playthrough/list/layout.tsx`, `src/app/playthrough/new/layout.tsx`, `src/app/settings/layout.tsx`). When you add a new route in Section 6, copy this pattern: add a `layout.tsx` beside your new `page.tsx` with a `title`, `description`, and `alternates.canonical`, then add the route to `sitemap.ts`.
+
+**Noindex pattern**: `src/app/settings/layout.tsx` sets `robots: { index: false, follow: true }` and `robots.ts` disallows `/settings/` — use the same pattern for any future route that's user-specific rather than shared content (e.g. a per-user dashboard), and leave those routes out of `sitemap.ts`.
 
 ---
 
