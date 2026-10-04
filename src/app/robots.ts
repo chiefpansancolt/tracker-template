@@ -4,12 +4,12 @@ import type { MetadataRoute } from "next";
 const SITE_URL = "https://YOUR_APP_NAME.example.com";
 
 export default function robots(): MetadataRoute.Robots {
-	return {
-		rules: {
-			userAgent: "*",
-			allow: "/",
-			disallow: ["/settings/"],
-		},
-		sitemap: `${SITE_URL}/sitemap.xml`,
-	};
+  return {
+    rules: {
+      userAgent: "*",
+      allow: "/",
+      disallow: ["/settings/"],
+    },
+    sitemap: `${SITE_URL}/sitemap.xml`,
+  };
 }

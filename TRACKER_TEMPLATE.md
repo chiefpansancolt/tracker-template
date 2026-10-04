@@ -63,7 +63,7 @@ Files to update:
 | `src/app/site.webmanifest`            | `name`, `short_name`, `theme_color`, icon paths                  |
 | `src/app/robots.ts`                   | `SITE_URL`                                                       |
 | `src/app/sitemap.ts`                  | `SITE_URL`, add an entry per new indexable route                 |
-| `src/app/opengraph-image.tsx`         | `alt`, title/subtitle text, colors                                |
+| `src/app/opengraph-image.tsx`         | `alt`, title/subtitle text, colors                               |
 | `.github/CODEOWNERS`                  | Your GitHub username                                             |
 | `.github/CONTRIBUTING.md`             | Repository URL                                                   |
 | `.github/FUNDING.yml`                 | Your funding links (or delete the file)                          |
@@ -74,12 +74,12 @@ Files to update:
 
 The template ships with a working SEO baseline. Update these pieces before you deploy:
 
-| File                              | What it does                                                                                     |
-| ---------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `src/app/layout.tsx`               | Root metadata — `siteUrl`, title template, description, keywords, OpenGraph/Twitter, canonical `/` |
-| `src/app/robots.ts`                | Crawl rules + sitemap pointer. `SITE_URL` here must match `siteUrl` in `layout.tsx`                 |
-| `src/app/sitemap.ts`               | List of indexable routes. `SITE_URL` here must match the other two files                            |
-| `src/app/opengraph-image.tsx`      | Dynamically generated 1200×630 social share image — no logo file required                           |
+| File                          | What it does                                                                                       |
+| ----------------------------- | -------------------------------------------------------------------------------------------------- |
+| `src/app/layout.tsx`          | Root metadata — `siteUrl`, title template, description, keywords, OpenGraph/Twitter, canonical `/` |
+| `src/app/robots.ts`           | Crawl rules + sitemap pointer. `SITE_URL` here must match `siteUrl` in `layout.tsx`                |
+| `src/app/sitemap.ts`          | List of indexable routes. `SITE_URL` here must match the other two files                           |
+| `src/app/opengraph-image.tsx` | Dynamically generated 1200×630 social share image — no logo file required                          |
 
 **The three `SITE_URL` / `siteUrl` values must always match.** A mismatch between them was a real bug found across the gamerdex app family (wrong domain in one file while the others were correct), so keep them in sync when you rename the app or change domains.
 
